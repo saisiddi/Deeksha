@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -17,12 +17,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
+  const closeMenu = () => setOpen(false);
 
   return (
     <header
@@ -51,7 +46,7 @@ export function Navbar() {
         <a
           href="#home"
           className="min-w-0 justify-self-center rounded md:justify-self-start"
-          aria-label="S-VYASA — Deeksharambh 2026 home"
+          aria-label="S-VYASA â€” Deeksharambh 2026 home"
         >
           <BrandMark logoOnly />
         </a>
@@ -82,18 +77,18 @@ export function Navbar() {
       <AnimatePresence>
         {open ? (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden border-t border-gold-500/15 bg-maroon-950/95 backdrop-blur-md md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            className="border-t border-gold-500/15 bg-maroon-950/95 backdrop-blur-md md:hidden"
           >
             <ul className="space-y-1 px-4 py-4">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    onClick={() => setOpen(false)}
+                    onClick={closeMenu}
                     className="block rounded px-4 py-3 text-base font-medium text-cream-100/90 transition-colors hover:bg-maroon-800/60 hover:text-gold-400"
                   >
                     {link.label}
@@ -103,7 +98,7 @@ export function Navbar() {
               <li>
                 <a
                   href="#register"
-                  onClick={() => setOpen(false)}
+                  onClick={closeMenu}
                   className="mt-2 block rounded-full bg-gradient-to-br from-gold-300 via-gold-500 to-gold-500 px-5 py-3 text-center text-base font-bold text-maroon-950"
                 >
                   Register Now
@@ -116,3 +111,5 @@ export function Navbar() {
     </header>
   );
 }
+
+
