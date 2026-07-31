@@ -31,22 +31,6 @@ export function Hero() {
       >
         ✦
       </motion.span>
-      <motion.span
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-10 top-1/3 select-none text-gold-500/10 md:left-16"
-        animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 90, ease: "linear" }}
-      >
-        <svg width="160" height="160" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5">
-          <circle cx="50" cy="50" r="46" />
-          <circle cx="50" cy="50" r="30" />
-          <circle cx="50" cy="50" r="14" />
-          <circle cx="50" cy="4" r="2" fill="currentColor" stroke="none" />
-          <circle cx="50" cy="96" r="2" fill="currentColor" stroke="none" />
-          <circle cx="4" cy="50" r="2" fill="currentColor" stroke="none" />
-          <circle cx="96" cy="50" r="2" fill="currentColor" stroke="none" />
-        </svg>
-      </motion.span>
 
       <motion.div
         variants={container}
