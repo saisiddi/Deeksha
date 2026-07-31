@@ -33,10 +33,26 @@ export function Navbar() {
       }`}
     >
       <nav
-        className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 md:h-20"
+        className="mx-auto grid h-16 max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-6 md:flex md:h-20 md:justify-between"
         aria-label="Main navigation"
       >
-        <a href="#home" className="min-w-0 rounded" aria-label="S-VYASA — Deeksharambh 2026 home">
+        <div className="flex items-center md:hidden">
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-label={open ? "Close menu" : "Open menu"}
+            className="grid size-11 place-items-center rounded text-cream-100"
+          >
+            {open ? <X className="size-6" /> : <Menu className="size-6" />}
+          </button>
+        </div>
+
+        <a
+          href="#home"
+          className="min-w-0 justify-self-center rounded md:justify-self-start"
+          aria-label="S-VYASA — Deeksharambh 2026 home"
+        >
           <BrandMark logoOnly />
         </a>
 
@@ -53,22 +69,13 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-end gap-3">
           <a
             href="#register"
             className="hidden rounded-full bg-gradient-to-br from-gold-300 via-gold-500 to-gold-500 px-5 py-2.5 text-sm font-bold text-maroon-950 shadow-[0_4px_20px_rgba(212,175,55,0.35)] transition-transform hover:scale-[1.03] hover:shadow-[0_4px_28px_rgba(212,175,55,0.5)] md:inline-flex"
           >
             Register Now
           </a>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-label={open ? "Close menu" : "Open menu"}
-            className="grid size-11 place-items-center rounded text-cream-100 md:hidden"
-          >
-            {open ? <X className="size-6" /> : <Menu className="size-6" />}
-          </button>
         </div>
       </nav>
 

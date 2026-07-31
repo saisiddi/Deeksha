@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="border-t border-gold-500/20 bg-maroon-950 px-4 py-12">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 md:flex-row md:items-start md:justify-between">
         <div className="flex flex-col items-center gap-4 md:items-start">
-          <BrandMark compact />
+          <BrandMark logoOnly />
           <p className="max-w-xs text-center text-sm leading-relaxed text-cream-200/70 md:text-left">
             Deeksharambh 2026 · Digital Creators League — an online creative
             contest series for newly admitted students of S-VYASA.

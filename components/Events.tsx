@@ -12,7 +12,7 @@ export function Events() {
         <Reveal>
           <SectionHeading
             eyebrow="Event Categories"
-            title="Five Ways to Shine"
+            title="Six Ways to Shine"
             description="Participate in one — or more. Every entry is judged by a panel of faculty members and invited experts."
           />
         </Reveal>
@@ -69,7 +69,7 @@ export function Events() {
         </div>
 
         <p className="mt-6 text-center text-xs text-cream-200/70 md:hidden">
-          Swipe to explore all five events →
+          Swipe to explore all six events →
         </p>
       </div>
     </section>

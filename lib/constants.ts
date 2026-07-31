@@ -8,6 +8,7 @@
   Sparkles,
   Star,
   PersonStanding,
+  Recycle,
   Trophy,
   Users,
   Video,
@@ -109,6 +110,20 @@ export const EVENTS: EventSpec[] = [
     ],
     description:
       "Capture photographs representing the beauty, culture, architecture, nature, student life, learning spaces, yoga environment, and memorable moments of the SVYASA campus.",
+  },
+  {
+    id: "best-from-waste",
+    emoji: "♻️",
+    name: "Best From Waste — Creativity Beyond Waste",
+    theme: "Reduce • Reuse • Recycle",
+    icon: Recycle,
+    specs: [
+      { label: "Format", value: "JPG / JPEG" },
+      { label: "Resolution", value: "Min 1920 × 1080 px" },
+      { label: "Editing", value: "Basic edits permitted" },
+    ],
+    description:
+      "Turn everyday waste materials into something innovative, useful, or artistic. Showcase your creativity by transforming discarded items into functional products, decorative pieces, or eco-friendly solutions that promote sustainability and environmental awareness.",
   },
 ];
 
