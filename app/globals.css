@@ -1,26 +1,128 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Core palette */
+  --color-maroon-950: #1a0505;
+  --color-maroon-900: #2b0808;
+  --color-maroon-800: #4a0e0e;
+  --color-maroon-700: #6b1414;
+
+  --color-gold-500: #d4af37;
+  --color-gold-400: #e8c766;
+  --color-gold-300: #f2dfa0;
+
+  --color-cream-100: #faf5ea;
+  --color-cream-200: #ede0c8;
+
+  --color-accent-orange: #e8632c;
+
+  --color-success: #3fae5c;
+  --color-error: #d64545;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-maroon-950: var(--color-maroon-950);
+  --color-maroon-900: var(--color-maroon-900);
+  --color-maroon-800: var(--color-maroon-800);
+  --color-maroon-700: var(--color-maroon-700);
+  --color-gold-500: var(--color-gold-500);
+  --color-gold-400: var(--color-gold-400);
+  --color-gold-300: var(--color-gold-300);
+  --color-cream-100: var(--color-cream-100);
+  --color-cream-200: var(--color-cream-200);
+  --color-accent-orange: var(--color-accent-orange);
+  --color-success: var(--color-success);
+  --color-error: var(--color-error);
+
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-playfair);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-maroon-950);
+  color: var(--color-cream-100);
+  font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+::selection {
+  background: var(--color-gold-500);
+  color: var(--color-maroon-950);
+}
+
+/* Elegant gold focus ring — replaces browser default blue */
+:focus-visible {
+  outline: 2px solid var(--color-gold-400);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Subtle film-grain overlay for premium dark sections */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Repeating diagonal ray texture, like the poster background */
+.rays {
+  background-image: repeating-conic-gradient(
+    from 12deg at 50% 50%,
+    rgba(232, 199, 102, 0.03) 0deg 2.5deg,
+    transparent 2.5deg 9deg
+  );
+}
+
+/* Gold hairline card border */
+.hairline {
+  border: 1px solid rgba(212, 175, 55, 0.32);
+}
+
+/* Soft gold glow on form fields while focused */
+.field-glow {
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.field-glow:focus-within {
+  border-color: rgba(212, 175, 55, 0.85);
+  box-shadow:
+    0 0 0 3px rgba(212, 175, 55, 0.18),
+    0 0 18px rgba(212, 175, 55, 0.12);
+}
+
+/* Hide scrollbar for the mobile events carousel but keep it swipeable */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
