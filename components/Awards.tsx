@@ -1,13 +1,18 @@
 import { Award, Medal, Users } from "lucide-react";
 import { AWARDS } from "@/lib/constants";
+import { CountUp } from "./CountUp";
 import { Reveal } from "./Reveal";
 
 export function Awards() {
   const stats = [
     {
       icon: Award,
-      value: `${AWARDS.winners} Category Winners`,
-      note: "A cash prize for every winning entry",
+      value: (
+        <>
+          <CountUp to={AWARDS.winners} /> Category Winners
+        </>
+      ),
+      note: "One winner crowned per event category",
     },
     {
       icon: Users,
@@ -24,7 +29,7 @@ export function Awards() {
   return (
     <section
       id="awards"
-      className="grain relative border-y border-gold-500/20 bg-maroon-900 px-4 py-16 md:py-20"
+      className="grain relative border-y border-gold-500/20 bg-maroon-950 px-4 py-16 md:py-20"
     >
       <div className="mx-auto max-w-6xl">
         <Reveal>
@@ -40,7 +45,7 @@ export function Awards() {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {stats.map((stat, index) => (
-            <Reveal key={stat.value} delay={0.06 * index}>
+            <Reveal key={stat.note} delay={0.06 * index}>
               <div className="hairline flex h-full flex-col items-center gap-3 rounded-2xl bg-maroon-800/60 p-7 text-center">
                 <span className="grid size-12 place-items-center rounded-full border border-gold-500/40 bg-maroon-900 text-gold-400">
                   <stat.icon className="size-6" aria-hidden="true" />

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { NAV_LINKS } from "@/lib/constants";
 import { BrandMark } from "./BrandMark";
 
@@ -17,24 +18,24 @@ export function Footer() {
           <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   className="text-sm text-cream-200/80 transition-colors hover:text-gold-400"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
         </nav>
 
         <div className="text-center md:text-right">
-          <a
-            href="#register"
+          <Link
+            href="/#events"
             className="inline-flex min-h-11 items-center rounded-full border border-gold-500/40 px-5 text-sm font-bold text-gold-400 transition-colors hover:border-gold-400/70 hover:text-gold-300"
           >
             Register Now
-          </a>
+          </Link>
         </div>
       </div>
 

@@ -47,6 +47,9 @@ export const registrationSchema = z.object({
   events: z.enum(EVENT_NAMES, {
     message: "Please select an event.",
   }),
+  agree: z
+    .boolean()
+    .refine((v) => v === true, "Please confirm you've read the Rules & Guidelines."),
 });
 
 export type RegistrationInput = z.infer<typeof registrationSchema>;

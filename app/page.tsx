@@ -1,12 +1,13 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
+import { LazyPosterCarousel } from "@/components/LazyPosterCarousel";
 import { Events } from "@/components/Events";
 import { Timeline } from "@/components/Timeline";
 import { Awards } from "@/components/Awards";
-import { RegistrationForm } from "@/components/RegistrationForm";
-import { Coordinators } from "@/components/Coordinators";
+import { LazyCoordinators } from "@/components/LazyCoordinators";
 import { Footer } from "@/components/Footer";
+import { PrizeBanner } from "@/components/PrizeBanner";
 
 export default function Home() {
   return (
@@ -15,13 +16,14 @@ export default function Home() {
       <main>
         <Hero />
         <About />
+        <LazyPosterCarousel />
         <Events />
         <Timeline />
         <Awards />
-        <RegistrationForm />
-        <Coordinators />
+        <LazyCoordinators />
       </main>
       <Footer />
+      <PrizeBanner />
     </>
   );
 }

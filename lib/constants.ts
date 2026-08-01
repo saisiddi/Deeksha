@@ -19,21 +19,25 @@ import type { LucideIcon } from "lucide-react";
 export type IconType = ComponentType<SVGProps<SVGSVGElement>> | LucideIcon;
 
 export const NAV_LINKS = [
-  { label: "Home", href: "#home" },
-  { label: "Events", href: "#events" },
-  { label: "Timeline", href: "#timeline" },
-  { label: "Register", href: "#register" },
-  { label: "Coordinators", href: "#coordinators" },
+  { label: "Home", href: "/#home" },
+  { label: "Events", href: "/#events" },
+  { label: "Timeline", href: "/#timeline" },
+  { label: "Rules", href: "/rules" },
+  { label: "Coordinators", href: "/#coordinators" },
 ];
 
 export interface EventSpec {
   id: string;
   emoji: string;
   name: string;
+  displayName?: string;
   theme: string;
   icon: IconType;
   specs: { label: string; value: string }[];
   description: string;
+  poster: string;
+  physical?: boolean;
+  detailSections?: { heading: string; items: string[] }[];
 }
 
 export const EVENTS: EventSpec[] = [
@@ -44,14 +48,15 @@ export const EVENTS: EventSpec[] = [
     theme: "My First Week @ SVYASA",
     icon: Clapperboard,
     specs: [
-      { label: "Duration", value: "30–60 sec Reel" },
+      { label: "Duration", value: "30–60 seconds" },
       { label: "Format", value: "MP4" },
-      { label: "Orientation", value: "Vertical 9:16" },
+      { label: "Orientation", value: "Vertical (9:16)" },
       { label: "Resolution", value: "Min 720p" },
       { label: "File Size", value: "Max 200 MB" },
     ],
     description:
-      "Create a creative reel showcasing your first week at SVYASA — memorable moments, friendships, classrooms, campus exploration, orientation activities, and your journey as a new student.",
+      "Create a creative reel showcasing your first week at SVYASA. Share memorable moments, friendships, classrooms, campus exploration, orientation activities, and your journey as a new student.",
+    poster: "/poster/Cmapus-Diaries.webp",
   },
   {
     id: "campus-vogue",
@@ -60,13 +65,14 @@ export const EVENTS: EventSpec[] = [
     theme: "Style with Confidence",
     icon: Crown,
     specs: [
-      { label: "Duration", value: "20–45 sec Fashion Reel" },
+      { label: "Duration", value: "20–45 seconds" },
       { label: "Format", value: "MP4" },
-      { label: "Orientation", value: "Vertical 9:16" },
+      { label: "Orientation", value: "Vertical (9:16)" },
       { label: "Resolution", value: "Min 720p" },
     ],
     description:
       "Create a stylish campus fashion reel highlighting your confidence, personality, creativity, and individuality while maintaining university values and decorum.",
+    poster: "/poster/CampusVogue.webp",
   },
   {
     id: "minute-to-shine",
@@ -75,12 +81,13 @@ export const EVENTS: EventSpec[] = [
     theme: "Every Talent Has a Stage",
     icon: Star,
     specs: [
-      { label: "Duration", value: "Max 60 sec Talent Video" },
+      { label: "Max Duration", value: "60 seconds" },
       { label: "Format", value: "MP4" },
       { label: "Resolution", value: "Min 720p" },
     ],
     description:
-      "Showcase your talent in one minute — singing, dancing, acting, instrumental music, painting, coding, poetry, photography, mimicry, magic, beatboxing, public speaking, Rubik's Cube solving, or any unique skill.",
+      "Showcase your talent in one minute. You may present singing, dancing, acting, instrumental music, painting, coding, poetry, photography, mimicry, magic, beatboxing, public speaking, Rubik's Cube solving, or any unique skill.",
+    poster: "/poster/Mine2Shine.webp",
   },
   {
     id: "yoga-in-motion",
@@ -89,13 +96,14 @@ export const EVENTS: EventSpec[] = [
     theme: "Balance. Breathe. Become.",
     icon: PersonStanding,
     specs: [
-      { label: "Duration", value: "30–60 sec Yoga Reel" },
+      { label: "Duration", value: "30–60 seconds" },
       { label: "Format", value: "MP4" },
-      { label: "Orientation", value: "Vertical 9:16" },
+      { label: "Orientation", value: "Vertical (9:16)" },
       { label: "Resolution", value: "Min 720p" },
     ],
     description:
-      "Create a creative yoga reel demonstrating asanas, flexibility, balance, mindfulness, meditation, or Surya Namaskar while emphasizing proper posture and safety.",
+      "Create a creative yoga reel demonstrating yoga asanas, flexibility, balance, mindfulness, meditation, or Surya Namaskar while emphasizing proper posture and safety.",
+    poster: "/poster/YogaInMotion.webp",
   },
   {
     id: "campus-through-your-lens",
@@ -106,32 +114,74 @@ export const EVENTS: EventSpec[] = [
     specs: [
       { label: "Format", value: "JPG / JPEG" },
       { label: "Resolution", value: "Min 1920 × 1080 px" },
-      { label: "Editing", value: "Basic edits permitted" },
+      { label: "Editing", value: "Cropping, brightness & contrast permitted" },
     ],
     description:
       "Capture photographs representing the beauty, culture, architecture, nature, student life, learning spaces, yoga environment, and memorable moments of the SVYASA campus.",
+    poster: "/poster/CampusTYLens.webp",
   },
   {
     id: "best-from-waste",
     emoji: "♻️",
     name: "Best From Waste — Creativity Beyond Waste",
+    displayName: "Best From Waste",
     theme: "Reduce • Reuse • Recycle",
     icon: Recycle,
+    physical: true,
     specs: [
-      { label: "Format", value: "JPG / JPEG" },
-      { label: "Resolution", value: "Min 1920 × 1080 px" },
-      { label: "Editing", value: "Basic edits permitted" },
+      { label: "Submission Mode", value: "Physical (bring to venue)" },
+      { label: "Materials", value: "Waste & recyclables" },
+      { label: "Judging", value: "Explain live (2–3 min)" },
     ],
     description:
       "Turn everyday waste materials into something innovative, useful, or artistic. Showcase your creativity by transforming discarded items into functional products, decorative pieces, or eco-friendly solutions that promote sustainability and environmental awareness.",
+    poster: "/poster/BestFromWaste.webp",
+    detailSections: [
+      {
+        heading: "Physical Submission Guidelines",
+        items: [
+          "Bring your completed model to the designated exhibition venue on the event day.",
+          "The model should be created primarily using waste or recyclable materials such as paper, cardboard, plastic bottles, newspapers, fabric scraps, cans, CDs, wood pieces, etc.",
+          "Attach a label with: Participant Name, Registration Number, School/Department, and Title of the Model.",
+          "You must be present during judging to explain the concept and usefulness of your model (2–3 minutes).",
+        ],
+      },
+      {
+        heading: "Judging Criteria",
+        items: [
+          "Creativity & Innovation",
+          "Effective Use of Waste Materials",
+          "Functionality & Practicality",
+          "Presentation & Finishing",
+          "Environmental Awareness",
+        ],
+      },
+      {
+        heading: "Important Guidelines",
+        items: [
+          "Only original, self-made models will be accepted.",
+          "The use of hazardous, flammable, or sharp materials is strictly prohibited.",
+          "Ready-made or commercially purchased decorative items will not be considered.",
+          "Models should be stable, portable, and easy to display.",
+          "Participants are responsible for transporting their models to and from the exhibition venue.",
+          "The decision of the judges will be final and binding.",
+        ],
+      },
+    ],
   },
 ];
 
-export const TIMELINE = [
+export const TIMELINE: {
+  icon: IconType;
+  title: string;
+  date: string;
+  next?: boolean;
+}[] = [
   {
     icon: CalendarClock,
     title: "Registration Opens",
     date: "03 / 08 / 2026",
+    next: true,
   },
   {
     icon: CalendarClock,
@@ -162,18 +212,13 @@ export const TIMELINE = [
 
 export const COORDINATORS = [
   {
-    name: "Nidhi Singh",
-    role: "Organizing Committee",
-    phone: "+91 94549 29255",
-    tel: "+919454929255",
-    whatsapp: "919454929255",
-  },
-  {
     name: "Kalmadi Saisiddi",
     role: "Organizing Committee",
     phone: "+91 87925 26242",
     tel: "+918792526242",
     whatsapp: "918792526242",
+    img: "/img/saisiddi.jpg",
+    imgPos: "center 45%",
   },
   {
     name: "Tarun",
@@ -181,34 +226,40 @@ export const COORDINATORS = [
     phone: "+91 99721 70225",
     tel: "+919972170225",
     whatsapp: "919972170225",
+    img: "/img/tarun.jpeg",
+    imgPos: "center 45%",
   },
   {
-    name: "Dr. Amal M R",
+    name: "Ujwal",
     role: "Organizing Committee",
-    phone: "+91 97467 18559",
-    tel: "+919746718559",
-    whatsapp: "919746718559",
+    phone: "+91 86183 56663",
+    tel: "+918618356663",
+    whatsapp: "918618356663",
+    img: "/img/ujwal.jpeg",
   },
   {
-    name: "Ms. Shylaja B",
+    name: "Monish",
     role: "Organizing Committee",
-    phone: "+91 98450 84298",
-    tel: "+919845084298",
-    whatsapp: "919845084298",
+    phone: "+91 70268 27604",
+    tel: "+917026827604",
+    whatsapp: "917026827604",
+    img: "/img/monish.jpg",
   },
   {
-    name: "Dr. Keerthi Mohan",
+    name: "Skanda Sai",
     role: "Organizing Committee",
-    phone: "+91 98801 44818",
-    tel: "+919880144818",
-    whatsapp: "919880144818",
+    phone: "+91 99029 56084",
+    tel: "+919902956084",
+    whatsapp: "919902956084",
+    img: "/img/skanda.jpeg",
   },
   {
-    name: "Mr. Veerendra Reddy",
+    name: "Ramanee Kaanth",
     role: "Organizing Committee",
-    phone: "+91 94838 58750",
-    tel: "+919483858750",
-    whatsapp: "919483858750",
+    phone: "+91 87549 73733",
+    tel: "+918754973733",
+    whatsapp: "918754973733",
+    img: "/img/ramanee_kaanth.jpg",
   },
 ];
 
@@ -240,7 +291,52 @@ export const OBJECTIVES = [
 ];
 
 export const AWARDS = {
-  winners: 5,
+  winners: 6,
   recognition:
     "Certificates for Winners, Runners-up & all valid Participants.",
 };
+
+export const RULES = [
+  {
+    title: "General Rules",
+    items: [
+      "Participation is open exclusively to students attending Deeksharambh 2026.",
+      "Students may participate in multiple events — register separately for each event.",
+      "All submissions must be original and created by the participant.",
+      "Entries must strictly follow the respective event theme.",
+      "Content should be respectful and align with university values.",
+      "Obscene, offensive, political, religious, discriminatory, or copyrighted content is prohibited.",
+      "Excessive AI-generated content that replaces original participant creativity is not permitted.",
+      "The organizing committee reserves the right to reject any entry that violates the guidelines.",
+      "The decision of the judges shall be final and binding.",
+    ],
+  },
+  {
+    title: "Evaluation Criteria",
+    table: [
+      { criteria: "Creativity & Innovation", marks: 30 },
+      { criteria: "Originality", marks: 20 },
+      { criteria: "Theme Relevance", marks: 20 },
+      { criteria: "Technical Quality", marks: 15 },
+      { criteria: "Presentation & Overall Impact", marks: 15 },
+    ],
+  },
+  {
+    title: "Judging Process",
+    items: [
+      "Entries will be evaluated by a panel of faculty members and invited experts.",
+      "Each entry will be assessed independently based on the evaluation criteria.",
+      "The judges' decision shall be final and binding.",
+      "Any attempt to influence the judging process will result in disqualification.",
+    ],
+  },
+  {
+    title: "Plagiarism Policy",
+    items: [
+      "Submitted work must be original.",
+      "Participants are responsible for ensuring that their submissions do not infringe on copyright.",
+      "Plagiarized or copied entries will be disqualified.",
+      "The organizing committee may request the original media files for verification if required.",
+    ],
+  },
+] as const;

@@ -15,7 +15,7 @@ export function About() {
 
         <div className="mx-auto max-w-3xl space-y-5 text-center">
           <Reveal delay={0.05}>
-            <p className="text-base leading-relaxed text-cream-100 md:text-lg">
+            <p className="font-body text-base leading-relaxed text-cream-100 md:text-lg">
               Digital Creators League is an online creative contest series
               organized as part of <strong className="font-semibold text-gold-400">Deeksharambh 2026</strong> to
               encourage newly admitted students to showcase their creativity,
@@ -23,7 +23,7 @@ export function About() {
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="text-base leading-relaxed text-cream-200 md:text-lg">
+            <p className="font-body text-base leading-relaxed text-cream-200 md:text-lg">
               The competition gives every student an opportunity to express
               themselves through reels, photography, talent performances, and
               yoga — all while celebrating their first experiences at SVYASA.

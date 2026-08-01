@@ -9,12 +9,12 @@ export function BrandMark({
 }) {
   if (logoOnly) {
     return (
-      <span className="relative block h-[55px] w-[165px]">
+      <span className="relative block h-[64px] w-[192px] md:h-[84px] md:w-[252px]">
         <Image
           src="/logo/vyasa.png"
           alt="S-VYASA Deemed to be University logo"
           fill
-          sizes="120px"
+          sizes="(min-width: 768px) 252px, 192px"
           priority
           className="object-contain"
         />

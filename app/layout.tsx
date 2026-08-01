@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Manrope } from "next/font/google";
+import { Playfair_Display, Manrope, Lora } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -14,8 +14,14 @@ const manrope = Manrope({
   display: "swap",
 });
 
+const lora = Lora({
+  variable: "--font-lora",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dcl-2026.vercel.app"),
+  metadataBase: new URL("https://deeksharambh-neon.vercel.app"),
   title: "Deeksharambh 2026 · Digital Creators League | S-VYASA",
   description:
     "Register for Deeksharambh 2026 — Digital Creators League, an online creative contest series for newly admitted students of S-VYASA Deemed to be University. Create. Trend. Inspire.",
@@ -48,7 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${manrope.variable} h-full antialiased`}
+      className={`${playfair.variable} ${manrope.variable} ${lora.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">{children}</body>
     </html>
