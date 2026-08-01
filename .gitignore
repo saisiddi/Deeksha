@@ -42,3 +42,6 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+# DCL proposal doc
+Digital_Creators_League_2026_Proposal_Final.docx
