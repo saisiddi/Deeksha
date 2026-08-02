@@ -109,18 +109,26 @@ export function Hero() {
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center">
         <h1
           aria-label={TITLE}
-          className="hero-title-metallic font-display leading-[1.05] text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
+          className="hero-title-metallic font-display font-black leading-[1.06]"
+          style={{ fontSize: "clamp(2.4rem, 9vw, 6.5rem)" }}
         >
-          {TITLE.split("").map((char, index) => (
+          {["Deeksharambh", "2026"].map((word, index) => (
             <motion.span
-              key={index}
-              aria-hidden="true"
-              className="inline-block will-change-[opacity]"
-              initial={prefersReducedMotion ? undefined : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.05 + index * 0.055, duration: 0.15 }}
+              key={word}
+              className="block whitespace-nowrap"
+              initial={
+                prefersReducedMotion
+                  ? undefined
+                  : { clipPath: "inset(-10% 100% -10% 0%)" }
+              }
+              animate={{ clipPath: "inset(-10% 0% -10% 0%)" }}
+              transition={{
+                duration: 0.7,
+                delay: 0.15 + index * 0.4,
+                ease: "easeInOut",
+              }}
             >
-              {char === " " ? " " : char}
+              {word}
             </motion.span>
           ))}
         </h1>
