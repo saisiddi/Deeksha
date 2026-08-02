@@ -3,8 +3,7 @@
 import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
 import { CalendarRange } from "lucide-react";
 import { useRef, useState } from "react";
-
-const TITLE = "Deeksharambh 2026";
+import { HandwrittenHeroTitle } from "./HandwrittenHeroTitle";
 
 function fade(delay: number) {
   return {
@@ -107,31 +106,8 @@ export function Hero() {
       </motion.span>
 
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center">
-        <h1
-          aria-label={TITLE}
-          className="hero-title-metallic font-display font-black leading-[1.06]"
-          style={{ fontSize: "clamp(2.4rem, 9vw, 6.5rem)" }}
-        >
-          {["Deeksharambh", "2026"].map((word, index) => (
-            <motion.span
-              key={word}
-              className="block whitespace-nowrap"
-              initial={
-                prefersReducedMotion
-                  ? undefined
-                  : { clipPath: "inset(-10% 100% -10% 0%)" }
-              }
-              animate={{ clipPath: "inset(-10% 0% -10% 0%)" }}
-              transition={{
-                duration: 0.7,
-                delay: 0.15 + index * 0.4,
-                ease: "easeInOut",
-              }}
-            >
-              {word}
-            </motion.span>
-          ))}
-        </h1>
+        <h1 className="sr-only">Deeksharambh 2026</h1>
+        <HandwrittenHeroTitle />
 
         <motion.p
           {...(prefersReducedMotion ? {} : fade(0.95))}
