@@ -261,20 +261,28 @@ export const COORDINATORS = [
     whatsapp: "918754973733",
     img: "/img/ramanee_kaanth.jpg",
   },
+  {
+    name: "Joylin",
+    role: "Organizing Committee",
+    phone: "+91 90193 90235",
+    tel: "+919019390235",
+    whatsapp: "919019390235",
+    img: "/img/joy.png",
+  },
 ];
 
 export const JUDGES = [
   { name: "Dr. Amal M R", role: "Judge — Campus Diaries", img: "/judge/amal.jpg" },
   { name: "Ms. Nidhi Singh", role: "Judge — Campus Diaries", img: "/judge/nidhi.jpg" },
   { name: "Ms. Sai Sree Basnet", role: "Judge — Campus Vogue" },
-  { name: "Ms. Sanjana Gupta", role: "Judge — Campus Vogue" },
+  { name: "Ms. Sanjana Gupta", role: "Judge — Campus Vogue", img: "/judge/sanjana.png" },
   { name: "Ms. Shylaja B", role: "Judge — Minute to Shine", img: "/judge/Shailaja.jpg" },
-  { name: "Ms. Sangeeta Behra", role: "Judge — Minute to Shine" },
+  { name: "Ms. Sangeeta Behra", role: "Judge — Minute to Shine", img: "/judge/sangeeta.png" },
   { name: "Mr. Ritik Nagar", role: "Judge — Yoga in Motion", img: "/judge/ritik.jpg" },
   { name: "Mr. Yeeshu Prajapati", role: "Judge — Yoga in Motion", img: "/judge/yeshu.jpg" },
   { name: "Dr. Keerthi Mohan", role: "Judge — Campus Through Your Lens", img: "/judge/keethi.jpg" },
   { name: "Mr. Veerendra Reddy", role: "Judge — Campus Through Your Lens", img: "/judge/reddy.jpg" },
-  { name: "Dr. Mrutyunjaya M S", role: "Judge — Best From Waste" },
+  { name: "Dr. Mrutyunjaya M S", role: "Judge — Best From Waste", img: "/judge/murthunjay.jpg" },
   { name: "Mr. Shubham Kumar", role: "Judge — Best From Waste", img: "/judge/Shubham.jpg" },
 ];
 
