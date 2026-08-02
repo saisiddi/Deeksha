@@ -7,7 +7,12 @@ import { HashtagBlock } from "./HashtagBlock";
 type RuleGroup = {
   title: string;
   items?: readonly string[];
-  table?: readonly { criteria: string; marks: number }[];
+  table?: readonly { criteria: string; marks: string }[];
+  blocks?: readonly {
+    heading: string;
+    table?: readonly { criteria: string; marks: string }[];
+    items?: readonly string[];
+  }[];
   hashtags?: boolean;
 };
 
@@ -54,6 +59,70 @@ export function RulesAccordion({ groups }: { groups: readonly RuleGroup[] }) {
                 }`}
               >
                 <div className="border-t border-gold-500/15 px-5 py-5 sm:px-6">
+                  {group.blocks ? (
+                    <div className="space-y-8">
+                      {group.blocks.map((block) => (
+                        <div key={block.heading}>
+                          <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-gold-300">
+                            {block.heading}
+                          </h3>
+                          {block.table ? (
+                            <table className="w-full text-sm">
+                              <thead>
+                                <tr className="border-b border-gold-500/25 text-left">
+                                  <th className="py-2.5 pr-4 font-semibold uppercase tracking-wider text-cream-200/80">
+                                    Criteria
+                                  </th>
+                                  <th className="py-2.5 text-right font-semibold uppercase tracking-wider text-cream-200/80">
+                                    Weightage
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {block.table.map((row) => (
+                                  <tr
+                                    key={row.criteria}
+                                    className="border-b border-gold-500/10"
+                                  >
+                                    <td className="py-3 pr-4 font-body text-cream-100">
+                                      {row.criteria}
+                                    </td>
+                                    <td className="py-3 text-right font-bold text-gold-300">
+                                      {row.marks}
+                                    </td>
+                                  </tr>
+                                ))}
+                                <tr>
+                                  <td className="py-3 pr-4 font-bold text-gold-400">
+                                    Total
+                                  </td>
+                                  <td className="py-3 text-right font-bold text-gold-400">
+                                    100%
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          ) : null}
+                          {block.items ? (
+                            <ul className="space-y-3">
+                              {block.items.map((item) => (
+                                <li
+                                  key={item}
+                                  className="flex items-start gap-3 font-body text-sm leading-relaxed text-cream-100 md:text-base"
+                                >
+                                  <span
+                                    aria-hidden="true"
+                                    className="mt-2 size-1.5 shrink-0 rounded-full bg-gold-400"
+                                  />
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          ) : null}
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
                   {group.table ? (
                     <table className="w-full text-sm">
                       <thead>

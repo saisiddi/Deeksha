@@ -337,12 +337,26 @@ export const RULES = [
   },
   {
     title: "Evaluation Criteria",
-    table: [
-      { criteria: "Creativity & Innovation", marks: 30 },
-      { criteria: "Originality", marks: 20 },
-      { criteria: "Theme Relevance", marks: 20 },
-      { criteria: "Technical Quality", marks: 15 },
-      { criteria: "Presentation & Overall Impact", marks: 15 },
+    blocks: [
+      {
+        heading: "Digital Competitions — Reels, Photos & Talent Videos",
+        table: [
+          { criteria: "Judge Score", marks: "50%" },
+          { criteria: "Likes", marks: "10%" },
+          { criteria: "Comments", marks: "10%" },
+          { criteria: "Views", marks: "30%" },
+        ],
+      },
+      {
+        heading: "Best From Waste — Physical Submission",
+        items: [
+          "Creativity & Innovation",
+          "Effective Use of Waste Materials",
+          "Functionality & Practicality",
+          "Presentation & Finishing",
+          "Environmental Awareness",
+        ],
+      },
     ],
   },
   {
