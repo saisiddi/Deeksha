@@ -301,13 +301,13 @@ export const COMMITTEES = {
     title: "Event Coordinators",
     designation: "Student Coordinators",
     members: [
+      "Kalmadi Saisiddi",
       "Anish Joylin",
       "Skanda Sai",
       "Tarun A",
       "Ujwal",
       "Ramneekanth",
       "Monish R",
-      "Sai Siddi",
     ],
   },
   judgePanel: {
