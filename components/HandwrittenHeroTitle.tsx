@@ -12,36 +12,31 @@ export function HandwrittenHeroTitle() {
   return (
     <div
       className="mx-auto"
-      style={{ width: "clamp(240px, 88vw, 880px)" }}
+      style={{ width: "100%", maxWidth: "min(90vw, 900px)" }}
     >
       <span className="sr-only">Deeksharambh 2026</span>
 
-      <div aria-hidden="true">
-        {heroPaths.map((line, index) => {
+      <svg
+        aria-hidden="true"
+        viewBox={heroPaths.viewBox}
+        width="100%"
+        style={{ display: "block", overflow: "visible" }}
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <defs>
+          <linearGradient id="gold-fill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#fff9e6" />
+            <stop offset="25%" stopColor="#e8c766" />
+            <stop offset="50%" stopColor="#b8860b" />
+            <stop offset="75%" stopColor="#f5d576" />
+            <stop offset="100%" stopColor="#d4af37" />
+          </linearGradient>
+        </defs>
+
+        {heroPaths.lines.map((line, index) => {
           const delay = index * (STROKE_DURATION + LINE_STAGGER);
           return (
-            <svg
-              key={line.text}
-              viewBox={line.viewBox}
-              width="100%"
-              style={{ display: "block", overflow: "visible" }}
-            >
-              <defs>
-                <linearGradient
-                  id={`gold-fill-${index}`}
-                  x1="0"
-                  y1="0"
-                  x2="0"
-                  y2="1"
-                >
-                  <stop offset="0%" stopColor="#fff9e6" />
-                  <stop offset="25%" stopColor="#e8c766" />
-                  <stop offset="50%" stopColor="#b8860b" />
-                  <stop offset="75%" stopColor="#f5d576" />
-                  <stop offset="100%" stopColor="#d4af37" />
-                </linearGradient>
-              </defs>
-
+            <g key={line.text}>
               <motion.path
                 d={line.d}
                 fill="none"
@@ -58,10 +53,9 @@ export function HandwrittenHeroTitle() {
                   ease: "easeInOut",
                 }}
               />
-
               <motion.path
                 d={line.d}
-                fill={`url(#gold-fill-${index})`}
+                fill="url(#gold-fill)"
                 stroke="none"
                 initial={{ opacity: prefersReducedMotion ? 1 : 0 }}
                 animate={{ opacity: 1 }}
@@ -72,10 +66,10 @@ export function HandwrittenHeroTitle() {
                     : delay + STROKE_DURATION - 0.3,
                 }}
               />
-            </svg>
+            </g>
           );
         })}
-      </div>
+      </svg>
     </div>
   );
 }

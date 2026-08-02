@@ -105,7 +105,7 @@ export function Hero() {
         ✦
       </motion.span>
 
-      <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center">
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center">
         <h1 className="sr-only">Deeksharambh 2026</h1>
         <HandwrittenHeroTitle />
 

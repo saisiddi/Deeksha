@@ -4,19 +4,37 @@ const fs = require("fs");
 const FONT_PATH = "./fonts/PlayfairDisplay-Black.ttf";
 const LINES = ["Deeksharambh", "2026"];
 const FONT_SIZE = 200;
+const LINE_GAP = 40;
 
 const buffer = fs.readFileSync(FONT_PATH);
-const font = opentype.parse(buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength));
+const font = opentype.parse(
+  buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength),
+);
 
-const result = LINES.map((line) => {
-  const path = font.getPath(line, 0, 0, FONT_SIZE);
+const widths = LINES.map((line) => {
+  const bbox = font.getPath(line, 0, 0, FONT_SIZE).getBoundingBox();
+  return bbox.x2 - bbox.x1;
+});
+const maxWidth = Math.max(...widths);
+
+let cursorY = 0;
+const lineData = LINES.map((line, index) => {
+  const x = (maxWidth - widths[index]) / 2;
+  const path = font.getPath(line, x, cursorY, FONT_SIZE);
   const bbox = path.getBoundingBox();
-  return {
-    text: line,
-    d: path.toPathData(2),
-    viewBox: `${bbox.x1} ${bbox.y1} ${bbox.x2 - bbox.x1} ${bbox.y2 - bbox.y1}`,
-  };
+  cursorY += FONT_SIZE + LINE_GAP;
+  return { text: line, d: path.toPathData(2), bbox };
 });
 
+const minX = Math.min(...lineData.map((l) => l.bbox.x1));
+const minY = Math.min(...lineData.map((l) => l.bbox.y1));
+const maxX = Math.max(...lineData.map((l) => l.bbox.x2));
+const maxY = Math.max(...lineData.map((l) => l.bbox.y2));
+
+const result = {
+  viewBox: `${minX} ${minY} ${maxX - minX} ${maxY - minY}`,
+  lines: lineData.map((l) => ({ text: l.text, d: l.d })),
+};
+
 fs.writeFileSync("./lib/heroPaths.json", JSON.stringify(result));
-console.log("Generated hero path data → lib/heroPaths.json");
+console.log("Generated combined hero path data → lib/heroPaths.json");
