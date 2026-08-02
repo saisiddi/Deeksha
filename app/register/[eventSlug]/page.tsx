@@ -5,6 +5,7 @@ import { ArrowLeft, Check } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { EventRegistrationForm } from "@/components/EventRegistrationForm";
+import { HashtagBlock } from "@/components/HashtagBlock";
 import { EVENTS } from "@/lib/constants";
 
 export function generateStaticParams() {
@@ -124,6 +125,10 @@ export default async function EventRegisterPage({
               </Link>
               .
             </p>
+          </div>
+
+          <div className="mt-8">
+            <HashtagBlock compact />
           </div>
 
           <div className="mt-12">

@@ -101,6 +101,28 @@ main > section:not(#home) {
   box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.28);
 }
 
+/* Metallic gold title treatment — hero title only */
+.hero-title-metallic {
+  font-family: var(--font-playfair);
+  font-weight: 900;
+  background: linear-gradient(
+    180deg,
+    #fdf6e3 0%,
+    #e8c766 15%,
+    #d4af37 40%,
+    #b8860b 60%,
+    #e8c766 80%,
+    #fdf6e3 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
 /* Subtle pulse ring for the next timeline milestone */
 @keyframes milestone-ping {
   0% {

@@ -2,11 +2,13 @@
 
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { HashtagBlock } from "./HashtagBlock";
 
 type RuleGroup = {
   title: string;
   items?: readonly string[];
   table?: readonly { criteria: string; marks: number }[];
+  hashtags?: boolean;
 };
 
 export function RulesAccordion({ groups }: { groups: readonly RuleGroup[] }) {
@@ -104,6 +106,11 @@ export function RulesAccordion({ groups }: { groups: readonly RuleGroup[] }) {
                       ))}
                     </ul>
                   )}
+                  {group.hashtags ? (
+                    <div className="mt-5">
+                      <HashtagBlock compact />
+                    </div>
+                  ) : null}
                 </div>
               </div>
             </div>

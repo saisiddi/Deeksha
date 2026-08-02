@@ -6,6 +6,7 @@ import { Events } from "@/components/Events";
 import { Timeline } from "@/components/Timeline";
 import { Awards } from "@/components/Awards";
 import { LazyCoordinators } from "@/components/LazyCoordinators";
+import { JudgingPanel } from "@/components/JudgingPanel";
 import { Footer } from "@/components/Footer";
 import { PrizeBanner } from "@/components/PrizeBanner";
 
@@ -21,6 +22,7 @@ export default function Home() {
         <Timeline />
         <Awards />
         <LazyCoordinators />
+        <JudgingPanel />
       </main>
       <Footer />
       <PrizeBanner />

@@ -201,12 +201,12 @@ export const TIMELINE: {
   {
     icon: PartyPopper,
     title: "Result Announcement",
-    date: "During the Deeksharambh 2026 Valedictory Ceremony",
+    date: "To be announced at the official Deeksharambh 2026 event",
   },
   {
     icon: Trophy,
     title: "Prize Distribution",
-    date: "During the Deeksharambh 2026 Valedictory Ceremony",
+    date: "Winners will be felicitated at the official Deeksharambh 2026 event",
   },
 ];
 
@@ -263,6 +263,21 @@ export const COORDINATORS = [
   },
 ];
 
+export const JUDGES = [
+  { name: "Dr. Amal M R", role: "Judge — Campus Diaries" },
+  { name: "Ms. Nidhi Singh", role: "Judge — Campus Diaries" },
+  { name: "Ms. Sai Sree Basnet", role: "Judge — Campus Vogue" },
+  { name: "Ms. Sanjana Gupta", role: "Judge — Campus Vogue" },
+  { name: "Ms. Shylaja B", role: "Judge — Minute to Shine" },
+  { name: "Ms. Sangeeta Behra", role: "Judge — Minute to Shine" },
+  { name: "Mr. Ritik Nagar", role: "Judge — Yoga in Motion" },
+  { name: "Mr. Yeeshu Prajapati", role: "Judge — Yoga in Motion" },
+  { name: "Dr. Keerthi Mohan", role: "Judge — Campus Through Your Lens" },
+  { name: "Mr. Veerendra Reddy", role: "Judge — Campus Through Your Lens" },
+  { name: "Dr. Mrutyunjaya M S", role: "Judge — Best From Waste" },
+  { name: "Mr. Shubham Kumar", role: "Judge — Best From Waste" },
+];
+
 export const OBJECTIVES = [
   {
     icon: Sparkles,
@@ -296,6 +311,14 @@ export const AWARDS = {
     "Certificates for Winners, Runners-up & all valid Participants.",
 };
 
+export const HASHTAGS = [
+  "#Deeksharambhsvyasa",
+  "#SVYASA",
+  "#SVYASAUniversity",
+  "#CampusLife",
+  "#HigherEducation",
+];
+
 export const RULES = [
   {
     title: "General Rules",
@@ -310,6 +333,7 @@ export const RULES = [
       "The organizing committee reserves the right to reject any entry that violates the guidelines.",
       "The decision of the judges shall be final and binding.",
     ],
+    hashtags: true,
   },
   {
     title: "Evaluation Criteria",
