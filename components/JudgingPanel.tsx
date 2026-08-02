@@ -1,4 +1,5 @@
 import { JUDGES } from "@/lib/constants";
+import { CommitteeStructure } from "./CommitteeStructure";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { PeopleCarousel } from "./PeopleCarousel";
@@ -19,6 +20,8 @@ export function JudgingPanel() {
         </Reveal>
 
         <PeopleCarousel items={JUDGES} />
+
+        <CommitteeStructure />
       </div>
     </section>
   );

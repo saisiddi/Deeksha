@@ -32,13 +32,12 @@ export interface EventSpec {
   name: string;
   displayName?: string;
   theme: string;
-  icon: IconType;
-  specs: { label: string; value: string }[];
-  description: string;
-  poster: string;
-  physical?: boolean;
-  detailSections?: { heading: string; items: string[] }[];
-}
+    icon: IconType;
+    specs: { label: string; value: string }[];
+    description: string;
+    poster: string;
+    detailSections?: { heading: string; items: string[] }[];
+  }
 
 export const EVENTS: EventSpec[] = [
   {
@@ -127,7 +126,6 @@ export const EVENTS: EventSpec[] = [
     displayName: "Best From Waste",
     theme: "Reduce • Reuse • Recycle",
     icon: Recycle,
-    physical: true,
     specs: [
       { label: "Submission Mode", value: "Physical (bring to venue)" },
       { label: "Materials", value: "Waste & recyclables" },
@@ -286,6 +284,46 @@ export const JUDGES = [
   { name: "Mr. Shubham Kumar", role: "Judge — Best From Waste", img: "/judge/Shubham.jpg" },
 ];
 
+export const COMMITTEES = {
+  organizing: {
+    title: "Organizing Committee",
+    designation: "Core Activity Committee",
+    members: [
+      "Dr. Mrutyunjaya MS (SET)",
+      "Ms. Nidhi Singh (SET)",
+      "Ms. Shylaja B (SET)",
+      "Dr. Keerthi Mohan (SET)",
+      "Dr. Amal M R (SET)",
+      "Mr. Veerendra Reddy (SET)",
+    ],
+  },
+  coordinators: {
+    title: "Event Coordinators",
+    designation: "Student Coordinators",
+    members: [
+      "Anish Joylin",
+      "Skanda Sai",
+      "Tarun A",
+      "Ujwal",
+      "Ramneekanth",
+      "Monish R",
+      "Sai Siddi",
+    ],
+  },
+  judgePanel: {
+    title: "Event Judge Panel",
+    designation: "Faculty & Staff Judges",
+    assignments: [
+      { event: "Campus Diaries", judges: ["Dr. Amal M R", "Ms. Nidhi Singh"] },
+      { event: "Campus Vogue", judges: ["Ms. Sai Sree Basnet", "Ms. Sanjana Gupta"] },
+      { event: "Minute to Shine", judges: ["Ms. Shylaja B", "Ms. Sangeeta Behra"] },
+      { event: "Yoga in Motion", judges: ["Mr. Ritik Nagar", "Mr. Yeeshu Prajapati"] },
+      { event: "Campus Through Your Lens", judges: ["Dr. Keerthi Mohan", "Mr. Veerendra Reddy"] },
+      { event: "Best From Waste", judges: ["Dr. Mrutyunjaya MS", "Mr. Shubham Kumar"] },
+    ],
+  },
+} as const;
+
 export const OBJECTIVES = [
   {
     icon: Sparkles,
@@ -347,13 +385,24 @@ export const RULES = [
     title: "Evaluation Criteria",
     blocks: [
       {
-        heading: "Digital Competitions — Reels, Photos & Talent Videos",
+        heading: "Judge Panel Evaluation (50%)",
         table: [
-          { criteria: "Judge Score", marks: "50%" },
-          { criteria: "Likes", marks: "10%" },
-          { criteria: "Comments", marks: "10%" },
-          { criteria: "Views", marks: "30%" },
+          { criteria: "Creativity & Innovation", marks: "10" },
+          { criteria: "Effective Use of Waste Materials", marks: "10" },
+          { criteria: "Functionality & Practicality", marks: "10" },
+          { criteria: "Presentation & Finishing", marks: "10" },
+          { criteria: "Environmental Awareness", marks: "10" },
         ],
+      },
+      {
+        heading: "Social Media Evaluation (50%)",
+        table: [
+          { criteria: "Maximum Views & Likes", marks: "20" },
+          { criteria: "Proper Use of Official Hashtags", marks: "10" },
+          { criteria: "Comments & Audience Engagement", marks: "10" },
+          { criteria: "Reposts/Shares", marks: "10" },
+        ],
+        total: "Total 100 Marks",
       },
       {
         heading: "Best From Waste — Physical Submission",

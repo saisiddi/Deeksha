@@ -12,6 +12,7 @@ type RuleGroup = {
     heading: string;
     table?: readonly { criteria: string; marks: string }[];
     items?: readonly string[];
+    total?: string;
   }[];
   hashtags?: boolean;
 };
@@ -92,16 +93,13 @@ export function RulesAccordion({ groups }: { groups: readonly RuleGroup[] }) {
                                     </td>
                                   </tr>
                                 ))}
-                                <tr>
-                                  <td className="py-3 pr-4 font-bold text-gold-400">
-                                    Total
-                                  </td>
-                                  <td className="py-3 text-right font-bold text-gold-400">
-                                    100%
-                                  </td>
-                                </tr>
                               </tbody>
                             </table>
+                          ) : null}
+                          {block.total ? (
+                            <div className="mt-3 border-t border-gold-500/25 pt-3 text-right text-sm font-bold text-gold-400">
+                              {block.total}
+                            </div>
                           ) : null}
                           {block.items ? (
                             <ul className="space-y-3">

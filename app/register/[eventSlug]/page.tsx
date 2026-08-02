@@ -55,13 +55,6 @@ export default async function EventRegisterPage({
             >
               <event.icon className="size-7" />
             </span>
-            {event.physical ? (
-              <p className="mt-4">
-                <span className="inline-block rounded-full border border-gold-500/50 bg-gold-500/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-gold-300">
-                  Physical Submission Event
-                </span>
-              </p>
-            ) : null}
             <h1 className="mt-4 font-display text-4xl font-bold italic leading-tight text-gold-500 sm:text-5xl">
               {event.name}
             </h1>

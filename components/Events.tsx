@@ -73,11 +73,6 @@ export function Events() {
                       </span>
                       <span className="text-xs font-bold uppercase tracking-[0.2em] text-cream-200/60">
                         Event {String(index + 1).padStart(2, "0")}
-                        {event.physical ? (
-                          <span className="ml-1.5 rounded border border-gold-500/40 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] text-gold-300">
-                            Physical
-                          </span>
-                        ) : null}
                       </span>
                     </div>
 
