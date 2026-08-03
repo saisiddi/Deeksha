@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, useReducedMotion } from "framer-motion";
-import { AlertCircle, ArrowLeft, Check, Loader2 } from "lucide-react";
+import { AlertCircle, ArrowLeft, Check, Loader2, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useForm } from "react-hook-form";
@@ -206,6 +206,20 @@ export function EventRegistrationForm({
         <p className="mt-6 max-w-md font-body text-sm leading-relaxed text-cream-200/90">
           Want to enter another event? Wonderful — just register again on that
           event&apos;s page. Each submission covers one event.
+        </p>
+
+        <a
+          href="https://chat.whatsapp.com/BAER6Dl6nXsKOskMeMk1XW"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 inline-flex min-h-12 items-center gap-2.5 rounded-full bg-gradient-to-br from-gold-300 via-gold-500 to-gold-500 px-6 text-sm font-bold text-maroon-950 shadow-[0_8px_32px_rgba(212,175,55,0.4)] transition-transform hover:scale-[1.03]"
+        >
+          <MessageCircle className="size-5" aria-hidden="true" />
+          Join the WhatsApp Group
+        </a>
+        <p className="mt-2.5 max-w-md font-body text-xs leading-relaxed text-cream-200/75">
+          Event updates, submission links and announcements will be shared in
+          the group — join to stay in the loop.
         </p>
 
         <Link
