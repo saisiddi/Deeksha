@@ -64,19 +64,40 @@ function doPost(e) {
   for (const field of required) {
     if (!data[field]) {
       return ContentService.createTextOutput(
-        JSON.stringify({ status: 'error', message: `Missing field: ${field}` })
+        JSON.stringify({ status: 'error', message: 'Missing field: ' + field })
       ).setMimeType(ContentService.MimeType.JSON);
+    }
+  }
+
+  const eventName = Array.isArray(data.events) ? data.events.join(', ') : data.events;
+  const usn = String(data.usn).toUpperCase().trim();
+
+  // De-dup: same USN + same event already registered → return success
+  // WITHOUT appending (prevents double entries on retries)
+  const lastRow = sheet.getLastRow();
+  if (lastRow > 1) {
+    const usns = sheet.getRange(2, 2, lastRow - 1, 1).getValues().flat();
+    const eventsCol = sheet.getRange(2, 7, lastRow - 1, 1).getValues().flat();
+    for (let i = 0; i < usns.length; i++) {
+      if (
+        String(usns[i]).toUpperCase().trim() === usn &&
+        String(eventsCol[i]).trim() === eventName
+      ) {
+        return ContentService.createTextOutput(
+          JSON.stringify({ status: 'success', duplicate: true, message: 'Already registered for this event.' })
+        ).setMimeType(ContentService.MimeType.JSON);
+      }
     }
   }
 
   sheet.appendRow([
     data.fullName,
-    data.usn.toUpperCase(),
+    usn,
     data.department,
     data.groupNumber,
     data.teamLeaderEmail,
     data.whatsapp,
-    Array.isArray(data.events) ? data.events.join(', ') : data.events
+    eventName
   ]);
 
   return ContentService.createTextOutput(
@@ -91,6 +112,10 @@ function doPost(e) {
 > Column order above matches the headers — `TeamLeaderEmail` sits between
 > `GroupNumber` and `WhatsAppNumber`. If you already have rows in the sheet,
 > insert the `TeamLeaderEmail` column in that position before testing.
+>
+> **After any edit to `Code.gs`**: redeploy via **Deploy → Manage deployments →
+> Edit → Version: New version → Deploy**. The `/exec` URL stays the same, so
+> `GOOGLE_SCRIPT_URL` does not need to change.
 
 ### Troubleshooting: 502 / 500 from `/api/register`
 

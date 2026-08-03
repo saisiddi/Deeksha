@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { registrationSchema } from "@/lib/validation";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 30;
 
 const rateLimitWindowMs = 60_000;
 const maxRequestsPerWindow = 10;
@@ -73,7 +74,7 @@ export async function POST(request: Request) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(parsed.data),
-      signal: AbortSignal.timeout(20_000),
+      signal: AbortSignal.timeout(25_000),
     });
 
     const raw = await upstream.text();
