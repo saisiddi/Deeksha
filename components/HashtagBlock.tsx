@@ -3,6 +3,7 @@
 import { Check, Copy } from "lucide-react";
 import { useState } from "react";
 import { HASHTAGS } from "@/lib/constants";
+import { InstagramIcon } from "./SocialIcons";
 
 export function HashtagBlock({ compact = false }: { compact?: boolean }) {
   const [copied, setCopied] = useState(false);
@@ -39,6 +40,22 @@ export function HashtagBlock({ compact = false }: { compact?: boolean }) {
           </span>
         ))}
       </div>
+      <p className="mt-4 flex flex-wrap items-center gap-2 font-body text-sm leading-relaxed text-cream-200/90">
+        — and{" "}
+        <span className="font-semibold text-cream-100">
+          tag our official Instagram page
+        </span>{" "}
+        in your post:
+        <a
+          href="https://www.instagram.com/svyasa.university?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 rounded-full border border-gold-500/40 bg-gold-500/10 px-3 py-1.5 text-xs font-semibold text-gold-300 transition-colors hover:border-gold-400/70 hover:bg-gold-500/20 hover:text-gold-200 sm:text-sm"
+        >
+          <InstagramIcon className="size-4" aria-hidden="true" />
+          @svyasa.university
+        </a>
+      </p>
       <button
         type="button"
         onClick={copyTags}
