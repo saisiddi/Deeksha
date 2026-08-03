@@ -1,23 +1,23 @@
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 import { BrandMark } from "./BrandMark";
+import { FacebookIcon, InstagramIcon, LinkedinIcon } from "./SocialIcons";
 
 const SOCIALS = [
   {
     label: "S-VYASA on LinkedIn",
     href: "https://www.linkedin.com/company/s-vyasa-global-city-campus/posts/?feedView=all",
-    icon: Linkedin,
+    icon: LinkedinIcon,
   },
   {
     label: "S-VYASA on Instagram",
     href: "https://www.instagram.com/svyasa.university?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-    icon: Instagram,
+    icon: InstagramIcon,
   },
   {
     label: "S-VYASA on Facebook",
     href: "https://www.facebook.com/svyasayoga",
-    icon: Facebook,
+    icon: FacebookIcon,
   },
 ];
 
