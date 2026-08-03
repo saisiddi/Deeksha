@@ -272,7 +272,7 @@ export const COORDINATORS = [
 export const JUDGES = [
   { name: "Dr. Amal M R", role: "Judge — Campus Diaries", img: "/judge/amal.jpg" },
   { name: "Ms. Nidhi Singh", role: "Judge — Campus Diaries", img: "/judge/nidhi.jpg" },
-  { name: "Ms. Sai Sree Basnet", role: "Judge — Campus Vogue" },
+  { name: "Ms. Sai Sree Basnet", role: "Judge — Campus Vogue", img: "/judge/saisree.png" },
   { name: "Ms. Sanjana Gupta", role: "Judge — Campus Vogue", img: "/judge/sanjana.png" },
   { name: "Ms. Shylaja B", role: "Judge — Minute to Shine", img: "/judge/Shailaja.jpg" },
   { name: "Ms. Sangeeta Behra", role: "Judge — Minute to Shine", img: "/judge/sangeeta.png" },
