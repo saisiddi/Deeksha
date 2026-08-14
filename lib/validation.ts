@@ -53,3 +53,59 @@ export const registrationSchema = z.object({
 });
 
 export type RegistrationInput = z.infer<typeof registrationSchema>;
+
+const digitalEventNames = EVENTS.filter((e) => e.id !== "best-from-waste").map(
+  (e) => e.name,
+) as [string, ...string[]];
+
+export const submissionSchema = z.object({
+  eventName: z.enum(digitalEventNames, {
+    message: "Please select an event.",
+  }),
+  teamName: z
+    .string()
+    .trim()
+    .min(2, "Please enter your team name.")
+    .max(60, "Team name is too long."),
+  teamLeaderName: z
+    .string()
+    .trim()
+    .min(3, "Please enter the team leader's name (min 3 characters).")
+    .max(60, "Name is too long."),
+  teamSize: z
+    .string()
+    .trim()
+    .regex(/^\d{1,2}$/, "Enter the team size as a number (1–50).")
+    .refine(
+      (value) => {
+        const size = Number(value);
+        return size >= 1 && size <= 50;
+      },
+      "Team size must be between 1 and 50.",
+    ),
+  department: z
+    .string()
+    .trim()
+    .min(2, "Please enter your department.")
+    .max(60, "Department name is too long."),
+  contactNumber: z
+    .string()
+    .trim()
+    .regex(
+      /^(\+91)?[6-9]\d{9}$/,
+      "Enter a valid 10-digit Indian mobile number (e.g. 98765 43210).",
+    ),
+  driveLink: z
+    .string()
+    .trim()
+    .min(1, "Please paste the Drive link to your entry.")
+    .url("Please paste a valid Drive link (must start with http/https)."),
+  socialMediaLink: z
+    .string()
+    .trim()
+    .url("Please paste a valid link or leave it blank.")
+    .optional()
+    .or(z.literal("")),
+});
+
+export type SubmissionInput = z.infer<typeof submissionSchema>;

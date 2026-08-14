@@ -117,6 +117,73 @@ function doPost(e) {
 > Edit → Version: New version → Deploy**. The `/exec` URL stays the same, so
 > `GOOGLE_SCRIPT_URL` does not need to change.
 
+---
+
+## Submission Sheet + Apps Script (entry links flow)
+
+Registration stores *who signed up*. Submissions store *who actually
+submitted work* — a separate spreadsheet, separate Apps Script deployment,
+separate env var.
+
+1. **Create the sheet** — name:
+
+   ```
+   Deeksharambh 2026 - DCL Submissions
+   ```
+
+   Rename the first tab to `Submissions` and set row 1 headers (bold, frozen):
+
+   | A1 | B1 | C1 | D1 | E1 | F1 | G1 | H1 | I1 |
+   |---|---|---|---|---|---|---|---|---|
+   | Timestamp | Event Name | Team Name | Team Leader Name | Team Size | Department | Contact Number | Drive Link | Social Media Link |
+
+2. **Apps Script** — on THAT sheet: `Extensions → Apps Script`, replace the
+   default code with:
+
+   ```javascript
+   function doPost(e) {
+     const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Submissions');
+     const data = JSON.parse(e.postData.contents);
+
+     const required = ['eventName', 'teamName', 'teamLeaderName', 'teamSize', 'department', 'contactNumber', 'driveLink'];
+     for (const field of required) {
+       if (!data[field]) {
+         return ContentService.createTextOutput(
+           JSON.stringify({ status: 'error', message: 'Missing field: ' + field })
+         ).setMimeType(ContentService.MimeType.JSON);
+       }
+     }
+
+     sheet.appendRow([
+       new Date(),
+       data.eventName,
+       data.teamName,
+       data.teamLeaderName,
+       data.teamSize,
+       data.department,
+       data.contactNumber,
+       data.driveLink,
+       data.socialMediaLink || ''
+     ]);
+
+     return ContentService.createTextOutput(
+       JSON.stringify({ status: 'success' })
+     ).setMimeType(ContentService.MimeType.JSON);
+   }
+   ```
+
+3. **Deploy** — `Deploy → New deployment → Web app` with **Execute as: Me**,
+   **Who has access: Anyone**. Copy the `/exec` URL.
+
+4. **Env var** — add to `.env.local` **and** to Vercel → Settings →
+   Environment Variables:
+
+   ```
+   SUBMISSION_SCRIPT_URL=https://script.google.com/macros/s/YYYYYYY/exec
+   ```
+
+   Do NOT overwrite `GOOGLE_SCRIPT_URL` — the two flows stay independent.
+
 ### Troubleshooting: 502 / 500 from `/api/register`
 
 The route proxies to the Apps Script URL. If the script returns an HTML

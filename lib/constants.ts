@@ -24,6 +24,7 @@ export const NAV_LINKS = [
   { label: "Timeline", href: "/#timeline" },
   { label: "Rules", href: "/rules" },
   { label: "Coordinators", href: "/#coordinators" },
+  { label: "Submit", href: "/submit" },
 ];
 
 export interface EventSpec {
@@ -356,6 +357,10 @@ export const AWARDS = {
   recognition:
     "Certificates for Winners, Runners-up & all valid Participants.",
 };
+
+export const SUBMISSION_EVENTS = EVENTS.filter(
+  (event) => event.id !== "best-from-waste",
+);
 
 export const HASHTAGS = [
   "#Deeksharambhsvyasa",

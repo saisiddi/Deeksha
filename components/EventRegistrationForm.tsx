@@ -222,6 +222,16 @@ export function EventRegistrationForm({
           the group — join to stay in the loop.
         </p>
 
+        <p className="mt-6 max-w-md font-body text-sm leading-relaxed text-cream-200">
+          Ready to submit your entry?{" "}
+          <Link
+            href="/submit"
+            className="font-semibold text-gold-400 underline-offset-4 transition-colors hover:text-gold-300 hover:underline"
+          >
+            Head to the Submission page →
+          </Link>
+        </p>
+
         <Link
           href="/#events"
           className="mt-8 inline-flex min-h-12 items-center gap-2 rounded-full border border-gold-500/40 px-6 text-sm font-bold text-gold-400 transition-colors hover:border-gold-400/70 hover:text-gold-300"
