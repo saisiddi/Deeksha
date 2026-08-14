@@ -103,18 +103,26 @@ export function Events() {
                       ))}
                     </ul>
 
-                    <div className="mt-auto pt-6">
-                      <Link
-                        href={`/register/${event.id}`}
-                        className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-gold-500/40 text-sm font-bold text-gold-400 transition-colors hover:border-gold-400/70 hover:bg-gold-500/10 hover:text-gold-300"
-                      >
-                        View Details &amp; Register
-                        <ArrowRight
-                          className="size-4 transition-transform duration-200 group-hover:translate-x-1"
-                          aria-hidden="true"
-                        />
-                      </Link>
-                    </div>
+                <div className="mt-auto flex flex-col gap-2.5 pt-6">
+                  <Link
+                    href={`/register/${event.id}`}
+                    className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-gold-500/40 text-sm font-bold text-gold-400 transition-colors hover:border-gold-400/70 hover:bg-gold-500/10 hover:text-gold-300"
+                  >
+                    View Details &amp; Register
+                    <ArrowRight
+                      className="size-4 transition-transform duration-200 group-hover:translate-x-1"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                  {event.id !== "best-from-waste" ? (
+                    <Link
+                      href={`/submit?event=${event.id}`}
+                      className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-br from-gold-300 via-gold-500 to-gold-500 text-sm font-bold text-maroon-950 shadow-[0_6px_24px_rgba(212,175,55,0.3)] transition-transform hover:scale-[1.02]"
+                    >
+                      Submit Entry
+                    </Link>
+                  ) : null}
+                </div>
                   </article>
                 </Reveal>
               </div>

@@ -76,13 +76,19 @@ function Field({
   );
 }
 
-export function SubmissionForm() {
+export function SubmissionForm({
+  prefillEventName,
+}: {
+  prefillEventName?: string;
+}) {
   const prefersReducedMotion = useReducedMotion();
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [submitted, setSubmitted] = useState<SubmissionInput | null>(null);
   const [eventsOpen, setEventsOpen] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState<EventSpec | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<EventSpec | null>(
+    () => SUBMISSION_EVENTS.find((e) => e.name === prefillEventName) ?? null,
+  );
   const eventsListRef = useRef<HTMLUListElement | null>(null);
   const successRef = useRef<HTMLDivElement | null>(null);
 
@@ -132,7 +138,7 @@ export function SubmissionForm() {
     resolver: zodResolver(submissionSchema),
     mode: "onTouched",
     defaultValues: {
-      eventName: "",
+      eventName: prefillEventName ?? "",
       teamName: "",
       teamLeaderName: "",
       teamSize: "",
@@ -416,7 +422,6 @@ export function SubmissionForm() {
         index="08"
         label="Social Media Link"
         htmlFor="socialMediaLink"
-        optional
         error={errors.socialMediaLink?.message}
       >
         <FieldBox>
@@ -425,7 +430,7 @@ export function SubmissionForm() {
             type="url"
             inputMode="url"
             autoComplete="off"
-            placeholder="https://www.instagram.com/… (leave blank if none)"
+            placeholder="https://www.instagram.com/reel/…"
             className={fieldInputClasses}
             aria-invalid={Boolean(errors.socialMediaLink)}
             {...register("socialMediaLink")}

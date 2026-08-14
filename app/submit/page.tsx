@@ -5,6 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { HashtagBlock } from "@/components/HashtagBlock";
 import { SubmissionForm } from "@/components/SubmissionForm";
+import { SUBMISSION_EVENTS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Submit Your Entry | Deeksharambh 2026 · Digital Creators League",
@@ -12,7 +13,16 @@ export const metadata: Metadata = {
     "Already registered for Deeksharambh 2026 — Digital Creators League? Submit your reel, video or photo entry here with a Google Drive link.",
 };
 
-export default function SubmitPage() {
+export default async function SubmitPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ event?: string }>;
+}) {
+  const { event: eventSlug } = await searchParams;
+  const prefillEvent = eventSlug
+    ? SUBMISSION_EVENTS.find((event) => event.id === eventSlug)
+    : undefined;
+
   return (
     <>
       <Navbar />
@@ -56,7 +66,7 @@ export default function SubmitPage() {
               </h2>
             </div>
             <div className="hairline mt-8 rounded-3xl bg-gradient-to-b from-maroon-800/80 to-maroon-900/90 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.45)] sm:p-10">
-              <SubmissionForm />
+              <SubmissionForm prefillEventName={prefillEvent?.name} />
             </div>
             <p className="mt-5 text-center text-xs text-cream-200/70">
               Only the fields above are collected — no other personal data is

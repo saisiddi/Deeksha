@@ -103,9 +103,8 @@ export const submissionSchema = z.object({
   socialMediaLink: z
     .string()
     .trim()
-    .url("Please paste a valid link or leave it blank.")
-    .optional()
-    .or(z.literal("")),
+    .min(1, "Please paste the link to your social media post.")
+    .url("Please paste a valid link (must start with http/https)."),
 });
 
 export type SubmissionInput = z.infer<typeof submissionSchema>;
