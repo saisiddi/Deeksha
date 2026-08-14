@@ -142,7 +142,8 @@ separate env var.
 
    ```javascript
    function doPost(e) {
-     const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Submissions');
+     const ss = SpreadsheetApp.getActiveSpreadsheet();
+     const sheet = ss.getSheetByName('Submissions') || ss.getSheets()[0];
      const data = JSON.parse(e.postData.contents);
 
      const required = ['eventName', 'teamName', 'teamLeaderName', 'teamSize', 'department', 'contactNumber', 'driveLink'];

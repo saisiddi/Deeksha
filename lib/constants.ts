@@ -24,7 +24,6 @@ export const NAV_LINKS = [
   { label: "Timeline", href: "/#timeline" },
   { label: "Rules", href: "/rules" },
   { label: "Coordinators", href: "/#coordinators" },
-  { label: "Submit", href: "/submit" },
 ];
 
 export interface EventSpec {

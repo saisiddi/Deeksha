@@ -105,6 +105,18 @@ export const submissionSchema = z.object({
     .trim()
     .min(1, "Please paste the link to your social media post.")
     .url("Please paste a valid link (must start with http/https)."),
+  agreeRules: z
+    .boolean()
+    .refine(
+      (v) => v === true,
+      "Please confirm you've followed the rules and regulations.",
+    ),
+  agreeDrive: z
+    .boolean()
+    .refine(
+      (v) => v === true,
+      "Please confirm the Drive link is shared to everyone.",
+    ),
 });
 
 export type SubmissionInput = z.infer<typeof submissionSchema>;

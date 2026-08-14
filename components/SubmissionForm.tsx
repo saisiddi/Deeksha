@@ -146,6 +146,8 @@ export function SubmissionForm({
       contactNumber: "",
       driveLink: "",
       socialMediaLink: "",
+      agreeRules: false,
+      agreeDrive: false,
     },
   });
 
@@ -258,7 +260,24 @@ export function SubmissionForm({
       className="grid grid-cols-1 gap-y-6"
     >
       <Field index="01" label="Event Name" htmlFor="eventName" error={errors.eventName?.message}>
-        <div className="relative">
+        {prefillEventName && selectedEvent ? (
+          <div className="min-w-0">
+            <FieldBox className="border-gold-500/50 bg-gold-500/[0.06]">
+              <div className="absolute inset-0 flex items-center gap-3 px-4">
+                <selectedEvent.icon className="size-5 shrink-0 text-gold-400" aria-hidden="true" />
+                <span className="truncate text-base font-semibold text-cream-100">
+                  {selectedEvent.name}
+                </span>
+              </div>
+            </FieldBox>
+            <p className="mt-2 text-xs text-cream-200/60">
+              Pre-selected from the event card — to submit for another event,
+              use that event card&apos;s Submit button.
+            </p>
+            <input type="hidden" {...register("eventName")} />
+          </div>
+        ) : (
+          <div className="relative">
           <FieldBox className="cursor-pointer">
             <button
               type="button"
@@ -328,7 +347,8 @@ export function SubmissionForm({
               </motion.ul>
             ) : null}
           </AnimatePresence>
-        </div>
+          </div>
+        )}
       </Field>
 
       <Field index="02" label="Team Name" htmlFor="teamName" error={errors.teamName?.message}>
@@ -437,6 +457,75 @@ export function SubmissionForm({
           />
         </FieldBox>
       </Field>
+
+      <div className="space-y-3">
+        <div className="min-w-0">
+          <label
+            htmlFor="agreeRules"
+            className="flex cursor-pointer items-start gap-3"
+          >
+            <input
+              id="agreeRules"
+              type="checkbox"
+              className="peer sr-only"
+              aria-invalid={Boolean(errors.agreeRules)}
+              {...register("agreeRules")}
+            />
+            <span
+              aria-hidden="true"
+              className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-md border border-gold-500/50 bg-maroon-950/70 text-transparent transition-all peer-checked:border-gold-400 peer-checked:bg-gold-500/15 peer-checked:text-gold-400 peer-focus-visible:ring-2 peer-focus-visible:ring-gold-400 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-maroon-950"
+            >
+              <Check className="size-4" />
+            </span>
+            <span className="text-sm leading-relaxed text-cream-100">
+              I have followed all the rules and regulations.
+            </span>
+          </label>
+          {errors.agreeRules?.message ? (
+            <p
+              className="mt-2 flex items-start gap-1.5 text-xs font-medium leading-snug text-error"
+              role="alert"
+            >
+              <AlertCircle className="mt-px size-3.5 shrink-0" aria-hidden="true" />
+              {errors.agreeRules.message}
+            </p>
+          ) : null}
+        </div>
+
+        <div className="min-w-0">
+          <label
+            htmlFor="agreeDrive"
+            className="flex cursor-pointer items-start gap-3"
+          >
+            <input
+              id="agreeDrive"
+              type="checkbox"
+              className="peer sr-only"
+              aria-invalid={Boolean(errors.agreeDrive)}
+              {...register("agreeDrive")}
+            />
+            <span
+              aria-hidden="true"
+              className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-md border border-gold-500/50 bg-maroon-950/70 text-transparent transition-all peer-checked:border-gold-400 peer-checked:bg-gold-500/15 peer-checked:text-gold-400 peer-focus-visible:ring-2 peer-focus-visible:ring-gold-400 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-maroon-950"
+            >
+              <Check className="size-4" />
+            </span>
+            <span className="text-sm leading-relaxed text-cream-100">
+              I have kept the Drive link shared to everyone (Anyone with the
+              link).
+            </span>
+          </label>
+          {errors.agreeDrive?.message ? (
+            <p
+              className="mt-2 flex items-start gap-1.5 text-xs font-medium leading-snug text-error"
+              role="alert"
+            >
+              <AlertCircle className="mt-px size-3.5 shrink-0" aria-hidden="true" />
+              {errors.agreeDrive.message}
+            </p>
+          ) : null}
+        </div>
+      </div>
 
       {status === "error" ? (
         <motion.div
